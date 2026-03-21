@@ -20,8 +20,8 @@ const Course_Card = ({course, Height}) => {
             <div>
                 <div>
                     <img 
-                        src={course?.thumbnail}
-                        alt='course thumbnail'
+                        src={course?.thumbnail || 'https://via.placeholder.com/400x250?text=No+Image'}
+                        alt={course?.courseName ? `${course.courseName} thumbnail` : 'course thumbnail'}
                         className={`${Height}  rounded-xl object-cover`}
                     />
                 </div>

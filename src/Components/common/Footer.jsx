@@ -140,7 +140,7 @@ const Footer = () => {
       </div>
 
       <div className="flex flex-row-reverse items-center justify-between w-11/12 max-w-maxContent text-richblack-400 mx-auto  pb-14 text-sm">
-        <div>Created By - Harshit Gupta</div>
+        <div>Created By - Ayush Goyal</div>
       </div>
 
     </div>

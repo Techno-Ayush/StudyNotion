@@ -24,12 +24,6 @@ Study Notion is an ED Tech (Education Technology) web application developed usin
 
   
 ***
-## Screenshots
-![Screenshot 1](https://github.com/harshitG5180/StudyNotionEdTechProject/blob/cd17dfb57879ad3b4f34aa058fece1dafbab5129/src/assets/Screenshots/Screenshot3.png)
-![Screenshot 2](https://github.com/harshitG5180/StudyNotionEdTechProject/blob/cd17dfb57879ad3b4f34aa058fece1dafbab5129/src/assets/Screenshots/Screenshot2.png)
-![Screenshot 3](https://github.com/harshitG5180/StudyNotionEdTechProject/blob/cd17dfb57879ad3b4f34aa058fece1dafbab5129/src/assets/Screenshots/Screenshot1.png)
-
-***
 
 ## Important
 * Backend is  in the server folder.
@@ -41,7 +35,7 @@ Study Notion is an ED Tech (Education Technology) web application developed usin
 
 1. Clone the repository to your local machine.
     ```sh
-    git clone https://github.com/harshitG5180/StudyNotion.git
+    git clone https://github.com/Techno-Ayush/StudyNotion.git
     ```
 
 2. Install the required packages.

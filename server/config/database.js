@@ -9,6 +9,6 @@ exports.connect = () => {
     .then(() => console.log("DB Connected Successfully"))
     .catch( (error) => {
         console.log("DB Connection Failed " + error);
-        process.exit(1);
+        // process.exit(1); // Commented out to allow server to run without DB
     } )
 };

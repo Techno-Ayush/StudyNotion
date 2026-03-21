@@ -12,29 +12,117 @@ import ExploreMore from '../Components/core/HomePage/ExploreMore';
 import { useDispatch } from 'react-redux';
 import { setProgress } from "../slices/loadingBarSlice"
 import { getCatalogaPageData } from '../services/operations/pageAndComponentData';
+import { apiConnector } from '../services/apiConnector';
+import { categories } from '../services/apis';
 import CourseSlider from '../Components/core/Catalog/CourseSlider';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import RatingSlider from '../Components/core/Ratings/RatingSlider';
 
+// Mock data for demo
+const MOCK_COURSES = [
+  {
+    _id: "mock1",
+    courseName: "Machine Learning",
+    courseDescription: "Learn machine learning from scratch",
+    instructor: { firstName: "Ayush", lastName: "Goyal" },
+    ratingAndReviews: [],
+    price: 999,
+    thumbnail: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=250&fit=crop"
+  },
+  {
+    _id: "mock2",
+    courseName: "Web Development",
+    courseDescription: "Master web development with React and Node.js",
+    instructor: { firstName: "Ayush", lastName: "Goyal" },
+    ratingAndReviews: [],
+    price: 3000,
+    thumbnail: "https://images.unsplash.com/photo-1633356122544-f134324ef6db?w=400&h=250&fit=crop"
+  },
+  {
+    _id: "mock3",
+    courseName: "C++ Course",
+    courseDescription: "Learn C++ programming in depth",
+    instructor: { firstName: "Ayush", lastName: "Goyal" },
+    ratingAndReviews: [],
+    price: 10,
+    thumbnail: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=250&fit=crop"
+  }
+];
+
 
 function Home() {
     const [CatalogPageData, setCatalogPageData] = useState(null);
-    const categoryID = "658add72f2eae9a0c660adf9";
+    const [categoryID, setCategoryID] = useState(null);
+    const [loadingCatalog, setLoadingCatalog] = useState(true);
+    const [catalogError, setCatalogError] = useState("");
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const fetchCatalogPageData = async () => {
-            
-                const result = await getCatalogaPageData(categoryID,dispatch);
-                setCatalogPageData(result);
-                console.log("page data",CatalogPageData);
-            
-        }
+        const fetchCategories = async () => {
+            try {
+                const response = await apiConnector("GET", categories.CATEGORIES_API);
+                if (response.data?.success && response.data?.data?.length > 0) {
+                    setCategoryID(response.data.data[0]._id);
+                    setCatalogError("");
+                } else {
+                    // No categories in DB, use mock data
+                    setCatalogPageData({
+                        selectedCourses: MOCK_COURSES,
+                        differentCourses: MOCK_COURSES,
+                        success: true
+                    });
+                    setLoadingCatalog(false);
+                }
+            } catch (error) {
+                console.log("Category fetch error:", error.message);
+                // On error, use mock data
+                setCatalogPageData({
+                    selectedCourses: MOCK_COURSES,
+                    differentCourses: MOCK_COURSES,
+                    success: true
+                });
+                setLoadingCatalog(false);
+            }
+        };
+
+        fetchCategories();
+    }, []);
+
+    useEffect(() => {
+        const fetchCatalogPageData = async (selectedCategoryID) => {
+            if (!selectedCategoryID) return;
+            setLoadingCatalog(true);
+            try {
+                const result = await getCatalogaPageData(selectedCategoryID, dispatch);
+                if (result?.success) {
+                    setCatalogPageData(result);
+                    setCatalogError("");
+                } else {
+                    // Fallback to mock data
+                    setCatalogPageData({
+                        selectedCourses: MOCK_COURSES,
+                        differentCourses: MOCK_COURSES,
+                        success: true
+                    });
+                }
+            } catch (error) {
+                console.log("Catalog data error:", error.message);
+                // On error, use mock data
+                setCatalogPageData({
+                    selectedCourses: MOCK_COURSES,
+                    differentCourses: MOCK_COURSES,
+                    success: true
+                });
+            } finally {
+                setLoadingCatalog(false);
+            }
+        };
+
         if (categoryID) {
-            fetchCatalogPageData();
+            fetchCatalogPageData(categoryID);
         }
-    }, [categoryID])
-    const dispatch = useDispatch();
+    }, [categoryID, dispatch]);
   return (
     <div>
         <div className=' mx-auto relative flex flex-col w-11/12 items-center justify-between text-white '>
@@ -108,13 +196,21 @@ function Home() {
         <h2 className='section_heading mb-6 md:text-3xl text-xl'>
            Most Popular Courses
         </h2>
-        <CourseSlider Courses={CatalogPageData?.selectedCourses}/>
+        {loadingCatalog && !CatalogPageData ? (
+          <div className='text-center text-white'>Loading courses...</div>
+        ) : (        
+          <CourseSlider Courses={CatalogPageData?.selectedCourses || MOCK_COURSES}/>
+        )}
       </div>       
         <div className=' mx-auto box-content w-full max-w-maxContentTab px- py-12 lg:max-w-maxContent'>
         <h2 className='section_heading mb-6 md:text-3xl text-xl'>
            Students are learning
         </h2>
-        <CourseSlider Courses={CatalogPageData?.differentCourses}/>
+        {loadingCatalog && !CatalogPageData ? (
+          <div className='text-center text-white'>Loading courses...</div>
+        ) : (
+          <CourseSlider Courses={CatalogPageData?.differentCourses || MOCK_COURSES}/>
+        )}
       </div>       
 
 

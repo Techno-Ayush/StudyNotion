@@ -62,6 +62,13 @@ exports.capturePayment = async (req, res) => {
             receipt: Math.random(Date.now()).toString(),
         };
 
+        if (!instance) {
+            return res.status(500).json({
+                success: false,
+                message: "Razorpay instance is not configured. Set RAZORPAY_KEY and RAZORPAY_SECRET in .env.",
+            });
+        }
+
         try{
             //initiate the payment using razorpay
             const paymentResponse = await instance.orders.create(options);
