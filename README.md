@@ -24,12 +24,6 @@ Study Notion is an ED Tech (Education Technology) web application developed usin
 
   
 ***
-## Screenshots
-![Screenshot 1](https://github.com/Techno-Ayush/StudyNotion/blob/main/src/assets/Screenshots/Screenshot3.png)
-![Screenshot 2](https://github.com/Techno-Ayush/StudyNotion/blob/main/src/assets/Screenshots/Screenshot2.png)
-![Screenshot 3](https://github.com/Techno-Ayush/StudyNotion/blob/main/src/assets/Screenshots/Screenshot1.png)
-
-***
 ## Important
 * Backend is  in the server folder.
 * First create the categories e.g. web dev, Python, etc. (without categories courses cannot be added). To create categories create an Admin account and go to dashboard then admin panel.
