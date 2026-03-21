@@ -10,11 +10,13 @@ import {MdOutlineKeyboardArrowDown} from 'react-icons/md'
 import {FaAngleDoubleRight} from 'react-icons/fa'
 
 const VideoDetailsSidebar = ({setReviewModal}) => {
+  console.log("VideoDetailsSidebar rendering");
   const [activeStatus, setActiveStatus] = useState("");
   const [videoActive, setVideoActive] = useState("");
   const {courseId,sectionId,subsectionId} = useParams();
   // console.log("sectionId", sectionId, "SubSectionId", subsectionId);
   const {courseSectionData, courseEntireData, completedLectures, totalNoOfLectures} = useSelector(state => state.viewCourse);
+  console.log("courseSectionData", courseSectionData);
   // console.log(courseSectionData);
   const navigate = useNavigate();
   const[showSidebar, setShowSidebar] = useState(false);

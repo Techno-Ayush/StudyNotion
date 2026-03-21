@@ -24,7 +24,6 @@ Study Notion is an ED Tech (Education Technology) web application developed usin
 
   
 ***
-
 ## Important
 * Backend is  in the server folder.
 * First create the categories e.g. web dev, Python, etc. (without categories courses cannot be added). To create categories create an Admin account and go to dashboard then admin panel.
