@@ -57,4 +57,4 @@ Study Notion is an ED Tech (Education Technology) web application developed usin
     npm run dev
     ```
 
-5. Open the project in your browser at [`http://localhost:3002`](http://http://localhost:3002) to view your project.
+5. Open the project in your browser at [`http://localhost:3002`](http://localhost:3002) to view your project.
