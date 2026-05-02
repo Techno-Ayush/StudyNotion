@@ -25,7 +25,11 @@ Study Notion is an ED Tech (Education Technology) web application developed usin
   
 ***
 ## Important
-* Backend is  in the server folder.
+* Frontend is in the `frontend` folder.
+* Backend is in the `backend` folder.
+* Backend entry point is `backend/server.js`.
+* Express app setup, routes, controllers, models, middlewares, config and utilities are inside `backend/src`.
+* Database connection file is `backend/src/db/db.js`.
 * First create the categories e.g. web dev, Python, etc. (without categories courses cannot be added). To create categories create an Admin account and go to dashboard then admin panel.
 * To create an Admin account first sign up with a student or instructor account then go to your Database under the users model and change that 'accountType' to 'Admin'.
 
@@ -40,21 +44,24 @@ Study Notion is an ED Tech (Education Technology) web application developed usin
 2. Install the required packages.
     ```sh
     cd StudyNotion
+
+    cd frontend
     npm install
     
-    cd server
+    cd ../backend
     npm install
     ```
 
 3. Set up the environment variables:
 
-   Create a .env file in the root directory and /server
+   Create `.env` files in `frontend` and `backend`.
    Add the required environment variables, such as database connection details, JWT secret, and any other necessary configurations check .env.example files for more info.
 
 
 4. Start the development server.
     ```sh
+    cd frontend
     npm run dev
     ```
 
-5. Open the project in your browser at [`http://localhost:3002`](http://localhost:3002) to view your project.
+5. Open the project in your browser at [`http://localhost:3000`](http://localhost:3000) to view your project.
