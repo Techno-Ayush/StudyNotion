@@ -1,9 +1,9 @@
-import { setProgress } from "../../slices/loadingBarSlice.js";
+import { setProgress } from "../../slices/loadingBarSlice";
 import { apiConnector } from "../apiConnector";
 import { profileEndpoints } from "../apis";
 import { toast } from "react-hot-toast";
-import {settingsEndpoints} from "../apis"
-import { logout } from "./authAPI.js";
+import {settingsEndpoints} from "../apis";
+import { logout } from "./authAPI";
 
 
 
