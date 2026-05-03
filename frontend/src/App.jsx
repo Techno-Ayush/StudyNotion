@@ -24,7 +24,7 @@ import Cart from "./Components/core/Dashboard/Cart/index";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import AddCourse from "./Components/core/Dashboard/AddCourse/index";
 import MyCourses from "./Components/core/Dashboard/MyCourses/MyCourses";
-import EditCourse from "./Components/core/Dashboard/EditCourse.jsx/EditCourse";
+import EditCourse from "./Components/core/Dashboard/EditCourse/EditCourse";
 import Catalog from "./pages/Catalog";
 import ScrollToTop from "./Components/ScrollToTop";
 import CourseDetails from "./pages/CourseDetails";
