@@ -33,17 +33,6 @@ app.use(
 
 cloudnairyconnect();
 
-app.use("/api/v1", (req, res, next) => {
-  if (mongoose.connection.readyState !== 1) {
-    return res.status(503).json({
-      success: false,
-      message: "Database is not connected. Please check MONGODB_URL in backend/.env.",
-    });
-  }
-
-  next();
-});
-
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/profile", profileRoutes);
